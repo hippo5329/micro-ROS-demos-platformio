@@ -2,8 +2,8 @@
 Changelog for package micro_ros_demos_rclc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.0.2 (2024-05-31)
+------------------
 * addtwoints_server: correct node name (`#75 <https://github.com/micro-ROS/micro-ROS-demos/issues/75>`_) (`#76 <https://github.com/micro-ROS/micro-ROS-demos/issues/76>`_)
   (cherry picked from commit 70f3cbf27ce12dc9e57e5095b4233553e207d866)
   Co-authored-by: G.A. vd. Hoorn <g.a.vanderhoorn@tudelft.nl>
