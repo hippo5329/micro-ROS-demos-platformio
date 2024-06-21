@@ -2,6 +2,10 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+## Port to Platformio
+
+This repository ports the upstream micro_ros_demos packages to platformio to run on a real micro-controller, such as esp32 teensy and pico. Check [Wiki](https://github.com/hippo5329/micro-ROS-demos-platformio/wiki) for documentation and usage.
+
 ## Overview
 
 The primary purpose for this repository is to organise all packages for the [Micro-ROS project](https://microros.github.io/micro-ROS/) functionalities demonstrations.

@@ -215,3 +215,7 @@ CATKIN_IGNORE
 COLCON_IGNORE
 
 # End of https://www.gitignore.io/api/c,qt,c++,ros,cmake,qtcreator
+
+**/.pio/
+**/.swp/
+**/.vscode/
