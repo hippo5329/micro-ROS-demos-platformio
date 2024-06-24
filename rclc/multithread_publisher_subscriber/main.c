@@ -9,7 +9,9 @@
 
 #include <stdio.h>
 #include <pthread.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 #include <time.h>
 
 #define STRING_BUFFER_LEN 100
@@ -81,7 +83,7 @@ void subscription_callback(const void * msgin)
 	printf("Received %d-%d from %s\n", msg->stamp.sec, msg->stamp.nanosec, msg->frame_id.data);
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rclc_support_t support;

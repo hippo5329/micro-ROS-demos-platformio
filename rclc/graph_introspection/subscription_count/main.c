@@ -7,7 +7,9 @@
 #include <rcl_interfaces/msg/parameter_event.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc); return 1;}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
@@ -26,7 +28,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
   printf("    * Using 'rcl_count_subscribers': %lu\n", subscription_count);
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   printf("***Hint: test this example using 'ros2 run demo_nodes_cpp talker/listener' in another terminal***\n");
   rcl_allocator_t allocator = rcl_get_default_allocator();

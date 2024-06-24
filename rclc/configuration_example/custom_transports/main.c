@@ -123,7 +123,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 	}
 }
 
-int main(int argc, char * const argv[])
+int rmain(int argc, char * const argv[])
 {
   	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rclc_support_t support;

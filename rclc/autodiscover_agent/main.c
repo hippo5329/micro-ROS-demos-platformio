@@ -6,7 +6,9 @@
 #include <std_msgs/msg/int32.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #include <rmw_microros/rmw_microros.h>
 
@@ -26,7 +28,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 	}
 }
 
-int main()
+int rmain(int argc, const char * const * argv)
 {	
 	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rclc_support_t support;

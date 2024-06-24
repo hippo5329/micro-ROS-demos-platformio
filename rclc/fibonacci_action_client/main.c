@@ -109,7 +109,7 @@ void cancel_request_callback(
   }
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   rcl_allocator_t allocator = rcl_get_default_allocator();
   rclc_support_t support;

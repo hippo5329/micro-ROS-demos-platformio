@@ -6,7 +6,9 @@
 #include "example_interfaces/srv/add_two_ints.h"
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc);}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
@@ -20,7 +22,7 @@ void service_callback(const void * req, void * res){
   res_in->sum = req_in->a + req_in->b;
 }
 
-void main(void)
+int rmain(int argc, const char * const * argv)
 {	
     rcl_allocator_t allocator = rcl_get_default_allocator();
 

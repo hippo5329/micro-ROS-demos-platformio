@@ -40,7 +40,8 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
   }
 }
 
-int main() {
+int rmain(int argc, const char * const * argv)
+{
   allocator = rcl_get_default_allocator();
 
   //create init_options

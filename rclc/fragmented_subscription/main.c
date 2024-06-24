@@ -23,7 +23,7 @@ void subscription_callback(const void * msgin)
   	printf("I received an %ld array. Test: [%s]\n", msg->data.size, (pass_test) ? "OK" : "FAIL");
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   	memset(test_array,'z',ARRAY_LEN);
 

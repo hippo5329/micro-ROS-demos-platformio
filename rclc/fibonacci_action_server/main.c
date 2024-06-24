@@ -102,7 +102,7 @@ bool handle_cancel(rclc_action_goal_handle_t * goal_handle, void * context)
   return true;
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   rcl_allocator_t allocator = rcl_get_default_allocator();
   rclc_support_t support;

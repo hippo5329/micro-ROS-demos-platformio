@@ -22,7 +22,7 @@ void subscription_callback(const void * msgin)
 	printf("I have heard: \"%s\"\n", msg->data.data);
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   	memset(test_array,'z',ARRAY_LEN);
 

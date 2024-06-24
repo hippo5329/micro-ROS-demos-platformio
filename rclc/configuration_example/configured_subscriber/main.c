@@ -21,7 +21,7 @@ void subscription_callback(const void * msgin)
 	printf("Received: %d\n", msg->data);
 }
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
 	if (argc < 3 || argc > 4)
 	{

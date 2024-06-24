@@ -6,7 +6,9 @@
 #include <std_msgs/msg/header.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 #include <time.h>
 
 #define STRING_BUFFER_LEN 100
@@ -73,7 +75,7 @@ void pong_subscription_callback(const void * msgin)
 }
 
 
-int main()
+int rmain(int argc, const char * const * argv)
 {
 	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rclc_support_t support;

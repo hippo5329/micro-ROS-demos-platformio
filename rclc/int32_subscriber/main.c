@@ -19,7 +19,7 @@ void subscription_callback(const void * msgin)
 	printf("Received: %d\n", msg->data);
 }
 
-int main()
+int rmain(int argc, const char * const * argv)
 {
   	rcl_allocator_t allocator = rcl_get_default_allocator();
 	rclc_support_t support;

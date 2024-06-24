@@ -7,7 +7,9 @@
 #include <std_msgs/msg/int32.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #define RCCHECK(fn) {rcl_ret_t temp_rc = fn; if ((temp_rc != RCL_RET_OK)) {printf( \
         "Failed status on line %d: %d. Aborting.\n", __LINE__, (int)temp_rc); return 1;}}
@@ -64,7 +66,7 @@ bool on_parameter_changed(const Parameter * old_param, const Parameter * new_par
   return ret;
 }
 
-int main()
+int rmain(int argc, const char * const * argv)
 {
   rcl_allocator_t allocator = rcl_get_default_allocator();
   rclc_support_t support;

@@ -3,12 +3,14 @@
 #include <rcl/error_handling.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc); return 1;}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
 
-int main(int argc, const char * const * argv)
+int rmain(int argc, const char * const * argv)
 {
   rcl_init_options_t options = rcl_get_zero_initialized_init_options();
   rcl_allocator_t allocator = rcl_get_default_allocator();

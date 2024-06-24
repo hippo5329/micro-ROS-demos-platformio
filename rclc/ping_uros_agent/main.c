@@ -6,7 +6,9 @@
 #include <std_msgs/msg/string.h>
 
 #include <stdio.h>
+#ifndef ARDUINO_DUE
 #include <unistd.h>
+#endif
 
 #include <rmw_microros/rmw_microros.h>
 
@@ -64,7 +66,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     }
 }
 
-int main(int argc, char ** argv)
+int rmain(int argc, char ** argv)
 {
     /**
      * Parse arguments
