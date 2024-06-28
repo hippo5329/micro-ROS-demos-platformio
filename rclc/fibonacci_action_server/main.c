@@ -14,10 +14,6 @@
 #define RCSOFTCHECK(fn) {rcl_ret_t temp_rc = fn; if ((temp_rc != RCL_RET_OK)) {printf( \
         "Failed status on line %d: %d. Continuing.\n", __LINE__, (int)temp_rc);}}
 
-const char * goalResult[] =
-{[GOAL_STATE_SUCCEEDED] = "succeeded", [GOAL_STATE_CANCELED] = "canceled",
-  [GOAL_STATE_ABORTED] = "aborted"};
-
 void * fibonacci_worker(void * args)
 {
   (void) args;
@@ -62,7 +58,12 @@ void * fibonacci_worker(void * args)
     }
   }
 
-  printf("Goal %d %s, sending result array\n", req->goal.order, goalResult[goal_state]);
+  const char *goalResult;
+  if (goal_state == GOAL_STATE_SUCCEEDED) goalResult = "succeeded";
+  else if (goal_state == GOAL_STATE_CANCELED) goalResult = "canceled";
+  else if (goal_state == GOAL_STATE_ABORTED) goalResult = "aborted";
+  else goalResult = "error";
+  printf("Goal %d %s, sending result array\n", req->goal.order, goalResult);
 
   rcl_ret_t rc;
   do {
@@ -89,7 +90,7 @@ rcl_ret_t handle_goal(rclc_action_goal_handle_t * goal_handle, void * context)
 
   printf("Goal %d accepted\n", req->goal.order);
 
-  pthread_t * thread_id = malloc(sizeof(pthread_t));
+  pthread_t * thread_id = (pthread_t *)malloc(sizeof(pthread_t));
   pthread_create(thread_id, NULL, fibonacci_worker, goal_handle);
   return RCL_RET_ACTION_GOAL_ACCEPTED;
 }
