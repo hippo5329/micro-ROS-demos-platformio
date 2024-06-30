@@ -66,7 +66,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
     }
 }
 
-int rmain(int argc, char ** argv)
+int rmain(int argc, const char * const * argv)
 {
     /**
      * Parse arguments
