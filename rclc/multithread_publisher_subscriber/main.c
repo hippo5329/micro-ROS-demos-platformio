@@ -38,7 +38,7 @@ volatile bool exit_flag = false;
 void* publish(
         void* args)
 {
-	struct arg_struct *arguments = args;
+	struct arg_struct *arguments = (struct arg_struct *)args;
 	rcl_publisher_t *publisher = arguments->publisher;
 	uint8_t id = arguments->index;
 
@@ -46,7 +46,7 @@ void* publish(
 	std_msgs__msg__Header send_msg;
 
 	bool success = micro_ros_utilities_create_message_memory(
-    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Header), 
+    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Header),
 	&send_msg,
 	conf);
 
@@ -55,7 +55,7 @@ void* publish(
 		printf("Error allocating message memory for publisher %d", id);
 		return NULL;
 	}
-	
+
 	char message[STRING_BUFFER_LEN];
 	sprintf(message, "Thread %d", id);
 	send_msg.frame_id = micro_ros_string_utilities_set(send_msg.frame_id, message);
@@ -72,7 +72,7 @@ void* publish(
 		send_msg.stamp.nanosec = ts.tv_nsec;
 
 		RCSOFTCHECK(rcl_publish(publisher, &send_msg, NULL));
-		printf("Thread %d sent: %d-%d\n", id, send_msg.stamp.sec, send_msg.stamp.nanosec);	
+		printf("Thread %d sent: %d-%d\n", id, send_msg.stamp.sec, send_msg.stamp.nanosec);
         usleep(period_us);
     }
 }
@@ -110,12 +110,12 @@ int rmain(int argc, const char * const * argv)
 		&node,
 		ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Header),
 		"multithread_topic"));
-	
+
 	// Configure and allocate the subscriber message
 	conf.max_string_capacity = STRING_BUFFER_LEN;
 
 	bool success = micro_ros_utilities_create_message_memory(
-    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Header), 
+    ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Header),
 	&recv_msg,
 	conf);
 
@@ -133,7 +133,7 @@ int rmain(int argc, const char * const * argv)
 	// Start publish threads
 	for (size_t i = 0; i < PUBLISHER_NUMBER; i++)
 	{
-		struct arg_struct *args = malloc(sizeof(struct arg_struct));
+		struct arg_struct *args = (struct arg_struct *)malloc(sizeof(struct arg_struct));
 		args->publisher = &publisher[i];
 		args->index = i;
 
@@ -154,6 +154,6 @@ int rmain(int argc, const char * const * argv)
 		pthread_join(pub_thr[i], NULL);
 		RCCHECK(rcl_publisher_fini(&publisher[i], &node));
 	}
-	
+
 	RCCHECK(rcl_node_fini(&node));
 }
