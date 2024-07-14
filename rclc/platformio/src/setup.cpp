@@ -32,7 +32,7 @@ size_t platformio_transport_read(struct uxrCustomTransport* transport, uint8_t* 
 int rmain(int argc, const char * const * argv);
 
 void setup() {
-	Serial.begin(115200);
+	Serial.begin(921600);
 #if defined(MICRO_ROS_TRANSPORT_ARDUINO_SERIAL)
 	set_microros_serial_transports(Serial);
 #elif defined(MICRO_ROS_TRANSPORT_ARDUINO_NATIVE_ETHERNET)
