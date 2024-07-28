@@ -25,7 +25,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time)
 	}
 }
 
-int rmain(int argc, char * const argv[])
+int rmain(int argc, const char * const * argv)
 {
 	if (argc < 3 || argc > 4)
 	{
