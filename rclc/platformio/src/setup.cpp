@@ -33,6 +33,9 @@ int rmain(int argc, const char * const * argv);
 
 void setup() {
 	Serial.begin(921600);
+#ifdef ESP32
+    Serial.setRxBufferSize(1024);
+#endif
 #if defined(MICRO_ROS_TRANSPORT_ARDUINO_SERIAL)
 	set_microros_serial_transports(Serial);
 #elif defined(MICRO_ROS_TRANSPORT_ARDUINO_NATIVE_ETHERNET)
