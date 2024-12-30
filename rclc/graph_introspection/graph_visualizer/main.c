@@ -169,5 +169,6 @@ int rmain(int argc, const char * const * argv)
 
   RCCHECK(rcl_node_fini(&node));
   RCCHECK(rcl_shutdown(&context));
+
   return 0;
 }

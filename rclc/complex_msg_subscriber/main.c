@@ -89,4 +89,6 @@ int rmain(int argc, const char * const * argv)
 
 	RCCHECK(rcl_subscription_fini(&subscriber, &node));
 	RCCHECK(rcl_node_fini(&node));
+
+	return 0;
 }

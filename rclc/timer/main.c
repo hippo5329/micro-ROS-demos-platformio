@@ -47,4 +47,6 @@ int rmain(int argc, const char * const * argv)
   	rclc_executor_spin(&executor);
 
 	RCCHECK(rcl_node_fini(&node));
+
+	return 0;
 }

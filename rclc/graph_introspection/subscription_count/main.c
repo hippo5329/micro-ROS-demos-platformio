@@ -66,4 +66,6 @@ int rmain(int argc, const char * const * argv)
 
   RCCHECK(rcl_publisher_fini(&publisher, &node));
   RCCHECK(rcl_node_fini(&node));
+
+  return 0;
 }

@@ -58,4 +58,6 @@ int rmain(int argc, const char * const * argv)
 
   RCCHECK(rcl_client_fini(&client, &node));
   RCCHECK(rcl_node_fini(&node));
+
+  return 0;
 }

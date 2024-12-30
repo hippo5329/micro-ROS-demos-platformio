@@ -135,4 +135,6 @@ int rmain(int argc, const char * const * argv)
 	RCCHECK(rcl_subscription_fini(&ping_subscriber, &node));
 	RCCHECK(rcl_subscription_fini(&pong_subscriber, &node));
 	RCCHECK(rcl_node_fini(&node));
+
+	return 0;
 }

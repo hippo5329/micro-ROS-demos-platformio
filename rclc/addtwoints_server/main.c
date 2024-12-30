@@ -50,4 +50,6 @@ int rmain(int argc, const char * const * argv)
 
     RCCHECK(rcl_service_fini(&service, &node));
     RCCHECK(rcl_node_fini(&node));
+
+	return 0;
 }
